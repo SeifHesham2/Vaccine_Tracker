@@ -23,6 +23,11 @@ void System::EditInfo(string id) {
 	if (choice == "1") {
 		cout << "Enter Your National ID " << endl;
 		cin >> newid;
+		while (newid.size() != 14) {
+			cout << "Wrong National ID" << endl;
+			cout << "Enter Your National ID" << endl;
+			cin >> newid;
+		}
 		while (true) {
 			if (umap.find(newid) != umap.end()) {
 				cout << "This National ID Is Already Exist" << endl;
@@ -32,6 +37,11 @@ void System::EditInfo(string id) {
 				if (choice2 == "1") {
 					cout << "Enter Your New National ID " << endl;
 					cin >> newid;
+					while (newid.size() != 14) {
+						cout << "Wrong National ID" << endl;
+						cout << "Enter Your National ID" << endl;
+						cin >> newid;
+					}
 					
 				}
 				else {
@@ -51,35 +61,40 @@ void System::EditInfo(string id) {
 	else if (choice == "2") {
 		cout << "Enter Your New Password" << endl;
 		cin >> newpassword;
-		umap.at(id).SetPassword(newpassword);
+		while (newpassword.size() < 8) {
+			cout << "Passowrd size should be more than 8 character " << endl;
+			cout << "Enter Your New Password" << endl;
+			cin >> newpassword;
+		}
+		umap[id].SetPassword(newpassword);
 		cout << "your operation is done successfully" << endl;
 		EditInfo(id);
 	}
 	else if (choice == "3") {
 		cout << "Enter Your New Name" << endl;
 		getline(cin >> ws, newname);
-		umap.at(id).SetName(newname);
+		umap[id].SetName(newname);
 		cout << "your operation is done successfully" << endl;
 		EditInfo(id);
 	}
 	else if (choice == "4") {
 		cout << "Enter Your New Age" << endl;
 		cin >> newage;
-		umap.at(id).SetAge(newage);
+		umap[id].SetAge(newage);
 		cout << "your operation is done successfully" << endl;
 		EditInfo(id);
 	}
 	else if (choice == "5") {
 		cout << "Enter Your New Country" << endl;
 		getline(cin >> ws, newcountry);
-		umap.at(id).SetCountry(newcountry);
+		umap[id].SetCountry(newcountry);
 		cout << "your operation is done successfully" << endl;
 		EditInfo(id);
 	}
 	else if (choice == "6") {
 		cout << "Enter Your New Governorate" << endl;
 		getline(cin >> ws, newgovernorate);
-		umap.at(id).SetGovernorate(newgovernorate);
+		umap[id].SetGovernorate(newgovernorate);
 		cout << "your operation is done successfully" << endl;
 		EditInfo(id);
 	}
@@ -88,14 +103,14 @@ void System::EditInfo(string id) {
 		cout << "Enter 2 if you have taken your second dose" << endl;
 		cin >> newvaccine;
 		if (newvaccine == "1") {
-			umap.at(id).SetFirstDose(true);
+			umap[id].SetFirstDose(true);
 			cout << "your operation is done successfully" << endl;
 			EditInfo(id);
 
 		}
 		else if (newvaccine == "2") {
-			umap.at(id).SetFirstDose(true);
-			umap.at(id).SetSecondDose(true);
+			umap[id].SetFirstDose(true);
+			umap[id].SetSecondDose(true);
 			cout << "your operation is done successfully" << endl;
 			EditInfo(id);
 		}
@@ -119,10 +134,6 @@ void System::DeleteInfo(string id) {
 
 	}
 
-
-
-
-
-
-
 }
+
+
