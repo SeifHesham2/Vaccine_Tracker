@@ -34,7 +34,15 @@ void List<T>::Expand(){
 	arr = newarr;
 }
 
+template <class T>
+void List<T>::DeleteAt(int pos)
+{
+	assert(pos < count);
 
+	for (int i = pos; i < count - 1; i++)
+		arr[i] = arr[i + 1];
+	count--;
+}
 
 template <class T>
 void List<T>::Delete() {
