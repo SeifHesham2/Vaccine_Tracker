@@ -1,0 +1,20 @@
+#pragma once
+
+
+template <class T>
+class WaitingList
+{
+	T* arr;
+	int count, size;
+	int front, back;
+public:
+	WaitingList();
+	int length();
+	void push(T);
+	void pop();
+	void expand();
+	T Front();
+	bool empty();
+	bool full();
+	~WaitingList();
+};
